@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:#c6ea8b;
+      margin: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar ul li {
+      margin-left: 1.5rem;
+    }
+
+    .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #00bcd4;
+    }
+    @media (max-width: 768px) {
+      .navbar ul {
+        flex-direction: column;
+        display: none;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+      }
+
+      .navbar ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+    }
+
+
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #00bcd4;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #008fa1;
+    }
+
+    .confirmation {
+      margin-top: 15px;
+      color: green;
+      font-weight: bold;
+    }
+
+    .social-media {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .social-media a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #00bcd4;
+      font-size: 1.2rem;
+    }
+
+    .support-info {
+      margin-top: 30px;
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .support-info p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MyWebsite</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul id="nav-links">
+          <li><a href="A1.html">Home</a></li>
+          <li><a href="A2.html">Events</a></li>
+          <li><a href="A4.html">Register</a></li>
+          <li><a href="A6.html">Dashboard</a></li>
+          <li><a href="A5.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+  <header>
+    <h1>Contact Us</h1>
+    <p>We're here to help you</p>
+  </header>
+
+  <div class="container">
+
+    <form id="contactForm">
+      <h2>Send Us a Message</h2>
+
+      <label for="name">Name</label>
+      <input type="text" id="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required />
+
+      <label for="subject">Subject</label>
+      <input type="text" id="subject" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" rows="5" required></textarea>
+
+      <button type="submit">Submit</button>
+      <div class="confirmation" id="confirmationMessage"></div>
+    </form>
+
+    <div class="social-media">
+      <h2>Connect with Us</h2>
+      <a href="#" target="_blank">Facebook</a>
+      <a href="#" target="_blank">Twitter</a>
+      <a href="#" target="_blank">Instagram</a>
+      <a href="#" target="_blank">LinkedIn</a>
+    </div>
+
+    <div class="support-info">
+      <h2>Customer Support</h2>
+      <p><strong>Email:</strong> support@eventsplatform.com</p>
+      <p><strong>Phone:</strong> +1 800 123 4567</p>
+      <p><strong>Working Hours:</strong> Mon – Fri, 9:00 AM – 6:00 PM</p>
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const confirmation = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value;
+
+      confirmation.textContent = `Thank you, ${name}! Your message has been received. We'll contact you shortly.`;
+
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Details - Tech Conference 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #9cd29f;
+      color: #dbb0b0;
+    }
+
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    .event-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .event-details h2 {
+      color: #00bcd4;
+    }
+
+    .event-meta {
+      margin: 10px 0;
+      font-size: 0.95rem;
+    }
+
+    .countdown {
+      font-size: 1.1rem;
+      margin: 15px 0;
+      color: #e91e63;
+      font-weight: bold;
+    }
+
+    .agenda {
+      margin-top: 30px;
+    }
+
+    .agenda h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .registration-form {
+      margin-top: 30px;
+    }
+
+    .registration-form h3 {
+      margin-bottom: 10px;
+    }
+
+    form input, form button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    form button {
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    form button:hover {
+      background-color: #008fa1;
+    }
+
+    .confirmation {
+      margin-top: 10px;
+      color: green;
+    }
+
+    .social-share {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .social-share button {
+      background-color: #4267B2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .social-share button:hover {
+      background-color: #2d4a86;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Tech Conference 2025</h1>
+  </header>
+
+  <div class="container">
+    
+    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1050&q=80" alt="Event Banner" class="event-image">
+
+    <div class="event-details">
+      <h2>Tech Conference 2025</h2>
+      <div class="event-meta"><strong>Date:</strong> June 15, 2025</div>
+      <div class="event-meta"><strong>Time:</strong> 10:00 AM – 5:00 PM</div>
+      <div class="event-meta"><strong>Location:</strong> Grand Hall, New York City</div>
+      <p>Join us for an exciting day of innovation, networking, and hands-on sessions with top tech leaders and creators.</p>
+      <div class="countdown" id="countdown">Time left: calculating...</div>
+    </div>
+
+    <div class="agenda">
+      <h3>Event Agenda</h3>
+      <ul>
+        <li>10:00 AM – Keynote by CEO of InnovateTech</li>
+        <li>11:30 AM – AI & Future Panel Discussion</li>
+        <li>1:00 PM – Networking Lunch</li>
+        <li>2:30 PM – Workshops & Demos</li>
+        <li>4:00 PM – Closing Ceremony</li>
+      </ul>
+    </div>
+
+    <div class="registration-form">
+      <h3>Register for this Event</h3>
+      <form id="registrationForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <input type="tel" id="phone" placeholder="Your Phone Number" required />
+        <button type="submit">Register Now</button>
+      </form>
+      <div class="confirmation" id="confirmationMessage"></div>
+    </div>
+
+    <div class="social-share">
+      <p>Share this event with your friends!</p>
+      <button onclick="shareEvent()">Share on Facebook</button>
+    </div>
+
+  </div>
+
+  <script>
+
+    const countdown = document.getElementById('countdown');
+    const eventDate = new Date('2025-06-15T10:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = eventDate - now;
+
+      if (diff <= 0) {
+        countdown.textContent = "The event has started!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.textContent = `Time left: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const form = document.getElementById('registrationForm');
+    const confirmation = document.getElementById('confirmationMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      confirmation.textContent = `Thank you, ${name}! Your registration is confirmed.`;
+      form.reset();
+    });
+
+    function shareEvent() {
+      const url = encodeURIComponent(window.location.href);
+      const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      window.open(shareUrl, '_blank');
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Listing Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #c6ea8b;
+      color: #333;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar ul li {
+      margin-left: 1.5rem;
+    }
+
+    .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #00bcd4;
+    }
+    @media (max-width: 768px) {
+      .navbar ul {
+        flex-direction: column;
+        display: none;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+      }
+
+      .navbar ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+    }
+
+
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .search-bar {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .event-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .event-title {
+      color: #00bcd4;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .event-date-time,
+    .event-location,
+    .event-category {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    .event-description {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .event-card a {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #00bcd4;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+
+    .event-card a:hover {
+      background-color: #008fa1;
+    }
+
+    @media (max-width: 600px) {
+      .search-bar input {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MyWebsite</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul id="nav-links">
+          <li><a href="A1.html">Home</a></li>
+          <li><a href="A2.html">Events</a></li>
+          <li><a href="A4.html">Register</a></li>
+          <li><a href="A6.html">Dashboard</a></li>
+          <li><a href="A5.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+  <header>
+    <h1>All Upcoming Events</h1>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search events by title, location, date, or category..." onkeyup="filterEvents()" />
+  </div>
+
+  <div class="events-container" id="eventsContainer">
+
+    <div class="event-card" data-title="Tech Conference" data-location="New York" data-date="2025-06-15" data-category="Technology">
+      <div class="event-title">Tech Conference 2025</div>
+      <div class="event-date-time">June 15, 2025 · 10:00 AM</div>
+      <div class="event-location">Location: New York</div>
+      <div class="event-category">Category: Technology</div>
+      <div class="event-description">A global tech event featuring keynotes from industry leaders and hands-on workshops.</div>
+      <a href="A3.html">Register Now</a>
+    </div>
+
+    <div class="event-card" data-title="Startup Workshop" data-location="San Francisco" data-date="2025-08-10" data-category="Business">
+      <div class="event-title">Startup Workshop</div>
+      <div class="event-date-time">August 10, 2025 · 9:30 AM</div>
+      <div class="event-location">Location: San Francisco</div>
+      <div class="event-category">Category: Business</div>
+      <div class="event-description">A hands-on workshop for aspiring entrepreneurs to bring their ideas to life.</div>
+      <a href="A7.html">View Details</a>
+    </div>
+
+    <div class="event-card" data-title="Art & Culture Fest" data-location="Chicago" data-date="2025-07-02" data-category="Culture">
+      <div class="event-title">Art & Culture Fest</div>
+      <div class="event-date-time">July 2, 2025 · 5:00 PM</div>
+      <div class="event-location">Location: Chicago</div>
+      <div class="event-category">Category: Culture</div>
+      <div class="event-description">A celebration of global culture through art exhibits, music, and food.</div>
+      <a href="A8.html">Register Now</a>
+    </div>
+
+  </div>
+
+  <script>
+    function filterEvents() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const eventCards = document.querySelectorAll('.event-card');
+
+      eventCards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const location = card.getAttribute('data-location').toLowerCase();
+        const date = card.getAttribute('data-date').toLowerCase();
+        const category = card.getAttribute('data-category').toLowerCase();
+
+        if (
+          title.includes(input) ||
+          location.includes(input) ||
+          date.includes(input) ||
+          category.includes(input)
+        ) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>

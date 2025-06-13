@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Registration - Tech Conference 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:#c6ea8b;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #333;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .navbar ul li {
+      margin-left: 1.5rem;
+    }
+
+    .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: #00bcd4;
+    }
+    @media (max-width: 768px) {
+      .navbar ul {
+        flex-direction: column;
+        display: none;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+      }
+
+      .navbar ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+    }
+
+
+    header {
+      background-color: #00bcd4;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #00bcd4;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    input[type="checkbox"] {
+      width: auto;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #008fa1;
+    }
+
+    .confirmation {
+      display: none;
+    }
+
+    .confirmation p {
+      margin: 10px 0;
+    }
+
+    .print-btn {
+      margin-top: 15px;
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">MyWebsite</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <ul id="nav-links">
+          <li><a href="A1.html">Home</a></li>
+          <li><a href="A2.html">Events</a></li>
+          <li><a href="A4.html">Register</a></li>
+          <li><a href="A6.html">Dashboard</a></li>
+          <li><a href="A5.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+  <header>
+    <h1>Event Registration</h1>
+    <p>Register for Tech Conference 2025</p>
+  </header>
+
+  <div class="container" id="registrationContainer">
+
+    <form id="registrationForm">
+      <h2>User Registration</h2>
+
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" required />
+
+      <label for="ticketType">Ticket Type</label>
+      <select id="ticketType" required>
+        <option value="">-- Select Ticket Type --</option>
+        <option value="Standard">Standard</option>
+        <option value="VIP">VIP</option>
+        <option value="Student">Student</option>
+      </select>
+
+      <label for="quantity">Ticket Quantity</label>
+      <input type="number" id="quantity" min="1" value="1" required />
+
+      <label>
+        <input type="checkbox" id="subscribe" />
+        Subscribe to event updates via email
+      </label>
+
+      <button type="submit">Register</button>
+    </form>
+
+    <div class="confirmation" id="confirmationSection">
+      <h2>Registration Confirmed</h2>
+      <p><strong>Event:</strong> Tech Conference 2025</p>
+      <p><strong>Date:</strong> June 15, 2025</p>
+      <p><strong>Time:</strong> 10:00 AM – 5:00 PM</p>
+      <p id="confirmName"></p>
+      <p id="confirmEmail"></p>
+      <p id="confirmPhone"></p>
+      <p id="confirmTicket"></p>
+      <p id="confirmQuantity"></p>
+      <p id="confirmSubscription"></p>
+      <p>Thank you for registering! We look forward to seeing you at the event.</p>
+      <button class="print-btn" onclick="window.print()">Print Confirmation</button>
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const confirmation = document.getElementById('confirmationSection');
+    const container = document.getElementById('registrationContainer');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const ticket = document.getElementById('ticketType').value;
+      const quantity = document.getElementById('quantity').value;
+      const subscribe = document.getElementById('subscribe').checked;
+
+      document.getElementById('confirmName').textContent = `Name: ${name}`;
+      document.getElementById('confirmEmail').textContent = `Email: ${email}`;
+      document.getElementById('confirmPhone').textContent = `Phone: ${phone}`;
+      document.getElementById('confirmTicket').textContent = `Ticket Type: ${ticket}`;
+      document.getElementById('confirmQuantity').textContent = `Quantity: ${quantity}`;
+      document.getElementById('confirmSubscription').textContent = `Subscribed to Notifications: ${subscribe ? 'Yes' : 'No'}`;
+
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>

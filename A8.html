@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Art & Culture Fest</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #8edae0;
+    }
+
+    header {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    nav {
+      background: #444;
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1501876725168-00c445821c9e');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(153, 213, 224);
+      text-shadow: 2px 2px 6px black;
+      font-size: 2.5rem;
+      text-align: center;
+      padding: 20px;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .highlight-card {
+      flex: 1 1 45%;
+      background: #fafafa;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .highlight-card h3 {
+      margin-top: 0;
+      color: #555;
+    }
+
+    form {
+      background: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .highlights {
+        flex-direction: column;
+      }
+
+      .highlight-card {
+        flex: 1 1 100%;
+      }
+
+      .hero {
+        font-size: 1.8rem;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Art & Culture Fest 2025</h1>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#highlights">Highlights</a>
+    <a href="#register">Register</a>
+  </nav>
+
+  <div class="hero">
+    Celebrating Creativity & Diversity
+  </div>
+
+  <section id="about">
+    <h2>About the Fest</h2>
+    <p>
+      The Art & Culture Fest 2025 is a celebration of creativity, diversity, and heritage. Join us for a 3-day extravaganza filled with music, dance, art exhibits, cultural performances, workshops, and more!
+    </p>
+  </section>
+
+  <section id="highlights">
+    <h2>Event Highlights</h2>
+    <div class="highlights">
+      <div class="highlight-card">
+        <h3>Live Performances</h3>
+        <p>From classical dances to indie bands, enjoy spectacular performances by renowned artists.</p>
+      </div>
+      <div class="highlight-card">
+        <h3>Workshops & Exhibitions</h3>
+        <p>Participate in hands-on workshops and explore art exhibits showcasing local talent.</p>
+      </div>
+      <div class="highlight-card">
+        <h3>Food & Crafts Market</h3>
+        <p>Experience the tastes and traditions of different cultures through our curated stalls.</p>
+      </div>
+      <div class="highlight-card">
+        <h3>Open Mic & Street Art</h3>
+        <p>Unleash your talent or enjoy spontaneous creativity in our vibrant street zone.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="register">
+    <h2>Register for the Fest</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" required />
+      </div>
+      <div class="form-group">
+        <label for="interest">What interests you most?</label>
+        <textarea id="interest" rows="4" placeholder="E.g., dance, painting, food, etc."></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Art & Culture Fest. All Rights Reserved.
+  </footer>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!name || !email) {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      alert(`Thank you for registering, ${name}!`);
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

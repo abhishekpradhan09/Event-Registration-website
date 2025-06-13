@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Startup Workshop</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f7b5b5;
+    }
+
+    header {
+      background: #111;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background: #222;
+      padding: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7') center/cover no-repeat;
+      height: 300px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #007BFF;
+      color: black;
+      padding: 12px 20px;
+      border: none;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        font-size: 1.5em;
+        height: 200px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Startup Launch Workshop</h1>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#register">Register</a>
+  </nav>
+
+  <div class="hero">
+    🚀 Kickstart Your Startup Journey
+  </div>
+
+  <section id="about">
+    <h2>About the Workshop</h2>
+    <p>This workshop is designed for aspiring entrepreneurs who want to turn their startup ideas into reality. Learn from industry experts, network with other founders, and build your launch plan.</p>
+  </section>
+
+  <section id="schedule">
+    <h2>Schedule</h2>
+    <ul>
+      <li><strong>Day 1:</strong> Idea Validation & Business Model</li>
+      <li><strong>Day 2:</strong> MVP Building & Team Formation</li>
+      <li><strong>Day 3:</strong> Pitching, Funding & Scaling</li>
+    </ul>
+  </section>
+
+  <section id="register">
+    <h2>Register Now</h2>
+    <form id="registrationForm">
+      <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="idea">Your Startup Idea (optional):</label>
+        <textarea id="idea" rows="4"></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Startup Launch. All rights reserved.
+  </footer>
+
+  <script>
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (name === "" || email === "") {
+        alert("Please fill in all required fields.");
+        return;
+      }
+
+      alert("Thank you for registering, " + name + "!");
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
